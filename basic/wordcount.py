@@ -68,15 +68,25 @@ def get_dict_of_words(filename):
 def print_words(filename):
   dict_words = get_dict_of_words(filename)
   print("word -> count")
-  for k, v in dict_words.items():
-    print(k + " -> " + str(v))
+  keys = dict_words.keys()
   
-  sys.exit(0)
+  for key in sorted(keys):
+    print(key," -> ", dict_words[key])
+  
 
 def print_top(filename):
-  sys.exit(0)
+  dict_words = get_dict_of_words(filename)
+  print("Top 20 most common words\nword -> count")
 
+  items = dict_words.items()
+  items = sorted(items, key=lambda items: items[1], reverse=1)
 
+  i = 0
+  for item in items:
+    print(item[0], '->', item[1])
+    i +=1
+
+    if i>=20: break
 
 
 
